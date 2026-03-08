@@ -1,0 +1,59 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+// Read local.properties file
+def localPropertiesFile = rootProject.file('local.properties')
+def localProperties = [:] // Use a map instead of Properties
+
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.eachLine { line ->
+        def (key, value) = line.split('=')
+        localProperties[key.trim()] = value.trim()
+    }
+}
+
+def flutterVersionCode = localProperties['flutter.versionCode'] ?: '1'
+def flutterVersionName = localProperties['flutter.versionName'] ?: '1.0'
+
+android {
+    namespace "com.example.go_through"
+    compileSdkVersion 34 // Ensure compatibility with your dependencies
+    // ndkVersion flutter.ndkVersion // Uncomment if using NDK
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    defaultConfig {
+        applicationId "com.example.go_through"
+        minSdkVersion flutter.minSdkVersion // Ensure this is appropriate
+        targetSdkVersion 34 // Ensure this is appropriate
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug // Update for production releases
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    // Add any dependencies here
+}

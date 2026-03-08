@@ -1,0 +1,23 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "REPLACE_WITH_PROJECT_ID",
+          "appId": "REPLACE_WITH_ANDROID_APP_ID",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "REPLACE_WITH_PROJECT_ID",
+          "configurations": {
+            "android": "REPLACE_WITH_ANDROID_APP_ID",
+            "ios": "REPLACE_WITH_IOS_APP_ID",
+            "web": "REPLACE_WITH_WEB_APP_ID"
+          }
+        }
+      }
+    }
+  }
+}
